@@ -2,10 +2,8 @@
 
 ## Tasks:
 
-- [ ] Support unjoined imports
-- [ ] Transpile basic .ts
-- [ ] Transpile basic .tsx
-- [ ] Transpile basic .less (requires dependency)
+- [ ] Support included imports
+- [x] Support unjoined imports
 
 ## Install and use:
 
