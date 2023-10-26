@@ -8,5 +8,5 @@
 ## Install and use:
 
 ```
-To Be Updated
+bun install https://github.com/Voldemortas/BunTranspiler -d
 ```
