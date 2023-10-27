@@ -1,1 +1,3 @@
-console.log('Hello via Bun!')
+import Transpiler from './src/Transpiler'
+
+export default Transpiler
