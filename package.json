@@ -9,9 +9,6 @@
   "peerDependencies": {
     "typescript": "^5.0.0"
   },
-  "imports": {
-    "#src/*": "./build/*"
-  },
   "scripts": {
     "prettify": "prettier . --write"
   }
