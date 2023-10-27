@@ -39,9 +39,9 @@ export default class Transpiler {
       x[4],
     ]) as [string, string][]
 
-    return this.bunTranspiler.transformSync(
+    return (
       matches.reduce((acc, cur) => acc + this.transformImport(...cur), '') +
-        code.replaceAll(importRegex, ''),
+      this.bunTranspiler.transformSync(code.replaceAll(importRegex, ''))
     )
   }
 
