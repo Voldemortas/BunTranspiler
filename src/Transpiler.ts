@@ -45,12 +45,7 @@ export default class Transpiler {
         string,
         string,
       ][]
-    ).filter(
-      ([things, pck]) =>
-        !typeMatches.find(
-          ([thingsType, pckType]) => thingsType === things && pck === pckType,
-        ),
-    )
+    ).filter(([pck]) => !/\s*type\s*/.test(pck))
 
     return (
       matches.reduce((acc, cur) => acc + this.transformImport(...cur), '') +
