@@ -33,11 +33,24 @@ export default class Transpiler {
   }
 
   public transpile(code: string): any {
+    const importTypeRegex =
+      /(import\s*type\s*([^]+?{?[^]+?}?)from[^]+?(['"])([^]+?)\3)/gm
     const importRegex = /(import([^]+?{?[^]+?}?)from[^]+?(['"])([^]+?)\3)/gm
-    const matches = [...code.matchAll(importRegex)].map((x) => [
+    const typeMatches = [...code.matchAll(importTypeRegex)].map((x) => [
       x[2],
       x[4],
     ]) as [string, string][]
+    const matches = (
+      [...code.matchAll(importRegex)].map((x) => [x[2], x[4]]) as [
+        string,
+        string,
+      ][]
+    ).filter(
+      ([things, pck]) =>
+        !typeMatches.find(
+          ([thingsType, pckType]) => thingsType === things && pck === pckType,
+        ),
+    )
 
     return (
       matches.reduce((acc, cur) => acc + this.transformImport(...cur), '') +
